@@ -36,7 +36,7 @@ const Sidebar = () => {
         }
     ]
     const handleLogout = () => {
-        window.location.href= '/login'
+        window.location.href='/login'
     }
     const sidebarContent = (
         <>
