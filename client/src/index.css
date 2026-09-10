@@ -57,7 +57,11 @@
   input,
   select,
   textarea:focus {
-    @apply w-full px-4 py-2.5 bg-slate-50/50 border rounded-md outline-none ring-2 ring-indigo-500/20 border-indigo-400 transition-all duration-200 text-sm;
+    @apply w-full px-4 py-2.5 bg-slate-50/50 border rounded-md outline-none ring-2 ring-indigo-500/20 transition-all duration-200 text-sm;
+  }
+
+  input:focus {
+    @apply border-indigo-400
   }
 
   /* Table styles */
