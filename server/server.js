@@ -11,6 +11,8 @@ import dns from "node:dns/promises"
 import leaveRouter from './routes/leaveRoutes.js'
 import payslipRouter from './routes/payslipsRoute.js'
 import dashboardRouter from './routes/dashboardRoutes.js'
+import { serve } from 'inngest/express'
+import {inngest, functions} from './inngest/index.js'
 
 const app = express()
 const PORT = process.env.PORT || 4000
@@ -25,6 +27,7 @@ app.use('/api/attendance', attendanceRouter)
 app.use('/api/leave', leaveRouter)
 app.use('/api/payslips', payslipRouter)
 app.use('/api/dashboard', dashboardRouter)
+app.use('/api/inngest', serve({client:inngest, functions}))
     dns.setServers(["1.1.1.1"]);
 await connectDB()
 app.listen(PORT, () => console.log(`server running on port ${PORT}`))
