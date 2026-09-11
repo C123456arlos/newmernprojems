@@ -9,6 +9,8 @@ import profileRouter from './routes/profileRoutes.js'
 import attendanceRouter from './routes/attendanceRoutes.js'
 import { connectDB } from './config/db.js'
 import dns from "node:dns/promises"
+import leaveRouter from './routes/leaveRoutes.js'
+import payslipRouter from './routes/payslipsRoute.js'
 
 const app = express()
 const PORT = process.env.PORT || 4000
@@ -20,6 +22,8 @@ app.use('/api/auth', authRouter)
 app.use('/api/employees', employeesRouter)
 app.use('/api/profile', profileRouter)
 app.use('/api/attendance', attendanceRouter)
+app.use('/api/leave', leaveRouter)
+app.use('/api/payslips', payslipRouter)
     dns.setServers(["1.1.1.1"]);
 await connectDB()
 app.listen(PORT, () => console.log(`server running on port ${PORT}`))
