@@ -28,8 +28,9 @@ export const createLeave = async(req, res) => {
             startDate: new Date(startDate),
             endDate: new Date(endDate),
             reason,
-            status:'PENDING'
+            status: 'PENDING'
         })
+        console.log(status)
         await inngest.send({
             name: 'leave/pending',
             data: {
