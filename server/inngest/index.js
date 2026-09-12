@@ -24,7 +24,7 @@ const autoCheckOut = inngest.createFunction(
                     <p style="font-size: 16px;">If you have any questions, please contact your admin.</p>
                     <br />
                     <p style="font-size: 16px;">Best Regards,</p>
-                    <p style="font-size: 16px;">EMS</p>
+                    <p style="font-size: 16px;">fullstack employee dashboard</p>
                 </div>
             `
             })
@@ -58,7 +58,7 @@ const leaveApplicationReminder = inngest.createFunction(
                 <p style="font-size: 16px;">Please make sure to take action on this leave application.</p>
                 <br />
                 <p style="font-size: 16px;">Best Regards,</p>
-                <p style="font-size: 16px;">EMS</p>
+                <p style="font-size: 16px;">fullstack employee dashboard</p>
             </div>`
             })
             
@@ -113,7 +113,7 @@ const attendanceReminderCron = inngest.createFunction(
                                 <p style="font-size: 14px; color: #666;">Department: ${emp.department}</p>
                                 <br />
                                 <p style="font-size: 16px;">Best Regards,</p>
-                                <p style="font-size: 16px;"><strong>QuickEMS</strong></p>
+                                <p style="font-size: 16px;"><strong>fullstack employee dashboard</strong></p>
                             </div>`
                   })  
                 })
