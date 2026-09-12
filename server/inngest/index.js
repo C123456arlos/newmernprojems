@@ -67,7 +67,7 @@ const leaveApplicationReminder = inngest.createFunction(
 )
 const attendanceReminderCron = inngest.createFunction(
     // { id: 'attendance-reminder', triggers:[ { cron: 'TZ=America/New_York 30 11 * * *' }] },
-    { id: 'attendance-reminder', triggers:[ { cron: 'TZ=America/New_York 35 8 * * *' }] },
+    { id: 'attendance-reminder', triggers:[ { cron: 'TZ=America/New_York 39 8 * * *' }] },
     async ({ step }) => {
         const today = await step.run('get-today-date', () => {
             const startUTC = new Date(new Date().toLocaleDateString('en-US', { timeZone: 'America/New_York' }) + 'T00:00:00.000+05:30' + '05:30')
