@@ -2,6 +2,7 @@ import { DEPARTMENTS } from "../constants/departments.js"
 import Attendance from "../models/Attendance.js"
 import Employee from "../models/Employee.js"
 import LeaveApplication from "../models/LeaveApplication.js"
+import Payslip from "../models/Payslip.js"
 
 export const getDashboard = async (req, res) => {
     try {
@@ -33,10 +34,12 @@ export const getDashboard = async (req, res) => {
                     $gte: new Date(today.getFullYear(), today.getMonth(), 1),
                     $lt: new Date(today.getFullYear(), today.getMonth()+1, 1),
                 }
-            }).LeaveApplication.countDocuments({
+            }),
+                LeaveApplication.countDocuments({
                 employeeId: employee._id,
                 status: 'PENDING',
-            }).Payslip.findOne({employeeId:employee._id}).sort({createdAt:-1}).lean()
+                }),
+                 Payslip.findOne({ employeeId: employee._id }).sort({ createdAt: -1 }).lean()
             ])
             return res.json({
                 role: 'EMPLOYEE',
