@@ -15,6 +15,7 @@ export const createPayslip = async (req, res) => {
             deductions: Number(deductions || 0),
             netSalary
         })
+        console.log(payslip, 'payslip')
         return res.json({success:true, data:payslip})
     } catch (error) {
         return res.status(500).json({error:'failed'})

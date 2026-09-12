@@ -21,7 +21,7 @@ const payslipSchema = new mongoose.Schema({
         type: Number,
         default:0
     },
-    deduction: {
+    deductions: {
         type: Number,
        default:0
     },

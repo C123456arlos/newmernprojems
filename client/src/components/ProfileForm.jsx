@@ -1,5 +1,6 @@
 import { Loader2, Save, User } from "lucide-react"
 import { useState } from "react"
+import api from "../api/axios"
 
 const ProfileForm = ({ initialData, onSuccess }) => {
     const [loading, setLoading] = useState(false)
@@ -7,6 +8,19 @@ const ProfileForm = ({ initialData, onSuccess }) => {
     const [message, setMessage] = useState('')
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setLoading(true)
+        setError('')
+        setMessage('')
+        const formData = new FormData(e.currentTarget)
+        try {
+            await api.post('/profile', formData)
+            setMessage('profile updated successfully')
+            onSuccess?.()
+        } catch (error) {
+            setError(error?.response?.data?.error || error.message)
+        } finally {
+            setLoading(false)
+        }
     }
   return (
       <form onSubmit={handleSubmit} className="card p-5 sm:p-6 mb-6">
@@ -25,23 +39,23 @@ const ProfileForm = ({ initialData, onSuccess }) => {
               </div>
           )}
           <div className="space-y-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="sm:col-span-2">
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-4">
+                  <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">name</label>
                       <input disabled value={`${initialData.firstName} ${initialData.lastName}`}
                       className="bg-slate-50 text-slate-400 cursor-not-allowed"></input>
                   </div>
-                  <div className="sm:col-span-2">
+                  <div>
                       <label className="block text-sm font-medium text-slate-700 mb-2">email</label>
                       <input disabled value={initialData.email}
                       className="bg-slate-50 text-slate-400 cursor-not-allowed"></input>
                   </div>
+              </div>
                   <div className="sm:col-span-2">
                       <label className="block text-sm font-medium text-slate-700 mb-2">position</label>
                       <input disabled value={initialData.position}
                       className="bg-slate-50 text-slate-400 cursor-not-allowed"></input>
                   </div>
-              </div>
               <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">bio</label>
                   <textarea disabled={initialData.isDeleted} name="bio" defaultValue={initialData.bio || ''}
